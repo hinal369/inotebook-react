@@ -79,8 +79,6 @@ const NoteState = (props) => {
 
       let newNotes = notes.map((note) => {
         if(note._id === id) return { ...note, title, description, tag };
-        console.log(note);
-        
         return note;
       });
 
