@@ -63,7 +63,7 @@ const AddNote = () => {
               id="tag"
               name="tag"
               onChange={onChange}
-              value={note.title}
+              value={note.tag}
             />
           </div>
           <button type="submit" disabled={note.title.length <= 3 || note.description.length <= 3} className="btn btn-primary" onClick={handleClick}>

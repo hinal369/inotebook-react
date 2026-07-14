@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NoteContext from "./noteContext";
 import Alert from "../../components/Alert";
+import alertContext from "../alert/alertContext";
 
 const NoteState = (props) => {
   const [notes, setNotes] = useState([]);
 
   const host = "http://localhost:5000";
   const authToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1MGU5YjFlNjY3NzMwNmVhZjYyN2FhIiwiZW1haWwiOiJoaW5hbEBnbWFpbC5jb20ifSwiaWF0IjoxNzg0MDIwOTgxfQ.UhhVTuC6rLI2HhDmqWliUx7k36D-g3K9LYpw_gT40qw`;
+
+  const context = useContext(alertContext);
+  const { showAlert } = context;
 
   //Get all notes
   const getAllNotes = async () => {
@@ -40,10 +44,10 @@ const NoteState = (props) => {
 
       const note = await response.json();
       setNotes(notes.concat(note));
-      <Alert message="Note Successfully Added!" />;
+      showAlert("Note added successfully!", "success");
     } catch (error) {
       console.log(error);
-      <Alert message="Something is wrong!" />;
+      showAlert("Something is wrong!", "danger");
     }
   };
 
@@ -60,6 +64,7 @@ const NoteState = (props) => {
     });
     const newNotes = notes.filter((note) => note._id !== id);
     setNotes(newNotes);
+    showAlert("Note deleted successfully!", "success");
   };
 
   // Edit a note
@@ -78,14 +83,15 @@ const NoteState = (props) => {
       });
 
       let newNotes = notes.map((note) => {
-        if(note._id === id) return { ...note, title, description, tag };
+        if (note._id === id) return { ...note, title, description, tag };
         return note;
       });
 
       setNotes(newNotes);
+      showAlert("Note updated successfully!", "success");
     } catch (error) {
       console.log(error);
-      <Alert message="Something is wrong!" />;
+      showAlert("Something is wrong!", "danger");
     }
   };
 

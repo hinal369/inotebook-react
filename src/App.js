@@ -4,21 +4,24 @@ import About from "./components/About";
 import { Routes, Route } from "react-router";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
+import AlertState from "./context/alert/AlertState";
 
 const App = () => {
   return (
-    <NoteState>
-      <div className="App">
-        <NavBar />
-        <Alert message="Alert Message"/>
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+    <AlertState>
+      <NoteState>
+        <div className="App">
+          <NavBar />
+          <Alert />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </NoteState>
+      </NoteState>
+    </AlertState>
   );
 };
 
