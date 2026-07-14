@@ -8,7 +8,7 @@ function AlertState(props) {
     setAlert({ message, type });
     setTimeout(() => {
       setAlert(null);
-    }, 1000); 
+    }, 2000); 
   }
    return (
     <AlertContext.Provider

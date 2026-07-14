@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router";
+import { NavLink, Link, useLocation } from "react-router";
 
 const NavBar = () => {
   let location = useLocation();
@@ -41,6 +41,15 @@ const NavBar = () => {
                 </NavLink>
               </li>
             </ul>
+            <form className="d-flex" role="search">
+             
+              <Link to="/login" className="btn btn-outline-success mx-2" type="submit">
+                Login
+              </Link>
+              <Link  to="/signup" className="btn btn-outline-success" type="submit">
+                Signup
+              </Link>
+            </form>
           </div>
         </div>
       </nav>

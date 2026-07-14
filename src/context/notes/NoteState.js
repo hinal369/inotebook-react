@@ -1,13 +1,12 @@
 import { useContext, useState } from "react";
 import NoteContext from "./noteContext";
-import Alert from "../../components/Alert";
 import alertContext from "../alert/alertContext";
 
 const NoteState = (props) => {
   const [notes, setNotes] = useState([]);
 
-  const host = "http://localhost:5000";
-  const authToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1MGU5YjFlNjY3NzMwNmVhZjYyN2FhIiwiZW1haWwiOiJoaW5hbEBnbWFpbC5jb20ifSwiaWF0IjoxNzg0MDIwOTgxfQ.UhhVTuC6rLI2HhDmqWliUx7k36D-g3K9LYpw_gT40qw`;
+  const host = process.env.REACT_APP_BACKEND_URL;
+  const authToken = process.env.REACT_APP_AUTH_TOKEN;
 
   const context = useContext(alertContext);
   const { showAlert } = context;
