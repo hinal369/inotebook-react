@@ -6,7 +6,7 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState([]);
 
   const host = "http://localhost:5000";
-  const authToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1M2QwMWEwN2FiNzFiNjUzY2Q4NmNjIiwiZW1haWwiOiJraGFsYXNpU2FoYWpAZ21haWwuY29tIn0sImlhdCI6MTc4Mzg3NzY1OH0.DE8zJqrYZ-KvfrYg9RDBJcrlv9os8OKPWGN10BqdlBE`;
+  const authToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1MGU5YjFlNjY3NzMwNmVhZjYyN2FhIiwiZW1haWwiOiJoaW5hbEBnbWFpbC5jb20ifSwiaWF0IjoxNzg0MDIwOTgxfQ.UhhVTuC6rLI2HhDmqWliUx7k36D-g3K9LYpw_gT40qw`;
 
   //Get all notes
   const getAllNotes = async () => {

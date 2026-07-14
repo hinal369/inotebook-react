@@ -13,7 +13,12 @@ const Notes = () => {
 
   const updateNote = (currentNote) => {
     ref.current.click();
-    setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
+    setNote({
+      id: currentNote._id,
+      etitle: currentNote.title,
+      edescription: currentNote.description,
+      etag: currentNote.tag,
+    });
   };
 
   const ref = useRef(null);
@@ -82,6 +87,7 @@ const Notes = () => {
                     onChange={onChange}
                     value={note.etitle}
                     required
+                    minLength={5}
                   />
                 </div>
                 <div className="mb-3">
@@ -95,6 +101,8 @@ const Notes = () => {
                     name="edescription"
                     value={note.edescription}
                     onChange={onChange}
+                    required
+                    minLength={5}
                   />
                 </div>
                 <div className="mb-3">
@@ -121,7 +129,14 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleClick}>
+              <button
+                type="button"
+                disabled={
+                  note.etitle.length <= 3 || note.edescription.length <= 3
+                }
+                className="btn btn-primary"
+                onClick={handleClick}
+              >
                 Update Note
               </button>
             </div>
@@ -131,6 +146,9 @@ const Notes = () => {
 
       <div className="row my-3">
         <h2>Your Notes</h2>
+        <div className="container">
+          {notes.length === 0 && "No Notes to display"}
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem note={note} key={note._id} updateNote={updateNote} />
